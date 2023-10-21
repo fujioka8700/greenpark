@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Comment extends Model
 {
-  use HasFactory;
+  use HasFactory, SerializeDate;
 
   /**
    * createメソッドを使用時、許可する属性
