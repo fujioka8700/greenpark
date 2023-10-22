@@ -1,0 +1,28 @@
+name: greenpark's CD
+run-name: ${{ github.actor }} is CD work
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      - name: Install SSH Key for Deploy
+        uses: appleboy/ssh-action@v1.0.0
+        env:
+          PW: ${{ secrets.PW }}
+          CD: ${{ secrets.CD }}
+        with:
+          key: ${{ secrets.SK }}
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USERNAME }}
+          port: ${{ secrets.SSH_PORT }}
+          envs: PW,CD
+          script: |
+            cd ~
+            touch githubSuccess
