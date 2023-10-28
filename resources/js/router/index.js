@@ -108,4 +108,11 @@ router.beforeEach((to, from) => {
   }
 });
 
+router.afterEach((to, from) => {
+  if (typeof gtag === "function") {
+    /** Google Analytics 遷移後に手動でpvを計上する。 */
+    gtag("config", "G-RPEH3MRV1Z", { page_path: to.path });
+  }
+});
+
 export default router;
