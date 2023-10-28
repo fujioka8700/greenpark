@@ -66,6 +66,11 @@ const router = createRouter({
       component: () => import("../components/pages/Login.vue"),
     },
     {
+      path: "/privacy",
+      name: "Privacy",
+      component: () => import("../components/pages/Privacy.vue"),
+    },
+    {
       path: "/register",
       name: "Register",
       component: () => import("../components/pages/Register.vue"),
@@ -105,6 +110,13 @@ router.beforeEach((to, from) => {
   /** ログイン済みなら、ログインページと会員登録ページは、表示させない。 */
   if (isAuthenticated && (to.name === "Login" || to.name === "Register")) {
     return { name: "Home" };
+  }
+});
+
+router.afterEach((to, from) => {
+  if (typeof gtag === "function") {
+    /** Google Analytics 遷移後に手動でpvを計上する。 */
+    gtag("config", "G-RPEH3MRV1Z", { page_path: to.path });
   }
 });
 
