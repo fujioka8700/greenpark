@@ -41,6 +41,9 @@ const movePage = (dest) => {
     case "rules":
       router.push({ name: "Rules" });
       break;
+    case "privacy":
+      router.push({ name: "Privacy" });
+      break;
     case "contact":
       router.push({ name: "Contact" });
       break;
