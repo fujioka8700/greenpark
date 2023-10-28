@@ -2,7 +2,7 @@
   <div>
     <v-container class="pa-0">
       <v-row no-gutters>
-        <v-col cols="9" sm="10">
+        <v-col cols="12" sm="10">
           <div>
             <p class="text-body-2">
               <span class="font-weight-bold mr-2">
@@ -17,7 +17,7 @@
             </p>
           </div>
         </v-col>
-        <v-col cols="3" sm="2" class="d-flex justify-center align-center">
+        <v-col cols="12" sm="2" class="d-flex justify-end align-center">
           <!-- 書き込みした本人のみ「削除」ボタンを表示する -->
           <template v-if="auth.user && auth.user.id === commentUserId">
             <CommentDestroyButton
