@@ -21,29 +21,25 @@
           </template>
         </v-list-item>
         <!-- メインコンテンツ、終わり -->
+
+        <!-- 補足情報、始まり -->
+        <v-list-item
+          variant="tonal"
+          v-for="(link, index) in links"
+          :key="index"
+          @click.stop="movePage(link.dest)"
+          link
+        >
+          <template v-slot:prepend>
+            <v-icon :icon="link.icon"></v-icon>
+          </template>
+          <v-list-item-title v-text="link.title"></v-list-item-title>
+        </v-list-item>
+        <!-- 補足情報、終わり -->
       </v-list>
 
-      <div ref="supplement" class="supplement">
-        <v-list>
-          <!-- 補足情報、始まり -->
-          <v-list-item
-            variant="tonal"
-            v-for="(link, index) in links"
-            :key="index"
-            @click.stop="movePage(link.dest)"
-            link
-          >
-            <template v-slot:prepend>
-              <v-icon :icon="link.icon"></v-icon>
-            </template>
-            <v-list-item-title v-text="link.title"></v-list-item-title>
-          </v-list-item>
-          <!-- 補足情報、終わり -->
-        </v-list>
-      </div>
-
       <!-- Copyright -->
-      <p ref="copyright" class="text-caption drawer_menu_copyright">
+      <p class="text-caption drawer_menu_copyright">
         &copy; {{ new Date().getFullYear() }} GreenPark
       </p>
     </v-navigation-drawer>
@@ -54,7 +50,7 @@
 import { menuItems, links } from "../../util";
 import { useStoreAuth } from "../../store/auth";
 import { storeToRefs } from "pinia";
-import { ref, onMounted, computed } from "vue";
+import { ref, computed } from "vue";
 import { useRouter } from "vue-router";
 
 const auth = useStoreAuth();
@@ -64,20 +60,6 @@ const router = useRouter();
 
 /** @type {boolean} ドロワーメニューの開閉 */
 const drawer = ref(false);
-
-/** @type {Object} 補足情報のDOM */
-const supplement = ref(null);
-
-/** @type {Object} CopyrightのDOM */
-const copyright = ref(null);
-
-/**
- * 補足情報をCopyrightの上に配置する
- */
-const setSupplementToBottom = () => {
-  const copyrightHeight = copyright.value.clientHeight;
-  supplement.value.style.bottom = copyrightHeight + "px";
-};
 
 /**
  * 未ログインなら、
@@ -146,10 +128,6 @@ const movePage = (dest) => {
   drawer.value = !drawer.value;
 };
 
-onMounted(() => {
-  setSupplementToBottom();
-});
-
 defineExpose({
   toggleDrawer,
 });
@@ -161,8 +139,5 @@ defineExpose({
   position: absolute;
   bottom: 0;
   text-align: center;
-}
-.supplement {
-  position: absolute;
 }
 </style>
