@@ -52,9 +52,10 @@
 
 <script setup>
 import { menuItems, links } from "../../util";
+import { backfaceFixed } from "../../util/drawer";
 import { useStoreAuth } from "../../store/auth";
 import { storeToRefs } from "pinia";
-import { ref, computed } from "vue";
+import { ref, computed, watch } from "vue";
 import { useRouter } from "vue-router";
 
 const auth = useStoreAuth();
@@ -84,6 +85,16 @@ const menuList = computed(() => {
     return !removals.includes(v.title);
   });
 });
+
+const open = () => {
+  // 背面コンテンツのスクロールを無効にする
+  backfaceFixed(true);
+};
+
+const close = () => {
+  // 背面コンテンツのスクロールの無効を解除する
+  backfaceFixed(false);
+};
 
 const toggleDrawer = () => {
   drawer.value = !drawer.value;
@@ -131,6 +142,18 @@ const movePage = (dest) => {
 
   drawer.value = !drawer.value;
 };
+
+watch(drawer, () => {
+  // ドロワーメニューが開いたとき
+  if (drawer.value === true) {
+    open();
+  }
+
+  // ドロワーメニューが閉じたとき
+  if (drawer.value === false) {
+    close();
+  }
+});
 
 defineExpose({
   toggleDrawer,
