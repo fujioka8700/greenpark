@@ -4,7 +4,7 @@
       <h2>運営者について</h2>
       <v-sheet max-width="500" min-width="300" class="mx-auto py-5">
         <img
-          src="https://4.bp.blogspot.com/-S6OAO0IYrRA/UdEeXO_O67I/AAAAAAAAVts/scX3FAJEwr4/s230/tree_green.png"
+          src="/storage/design/profile/tree_green.png"
           class="float-left mr-3 mb-3"
         />
         <p>
@@ -24,7 +24,7 @@
 
         <p>
           <img
-            src="https://2.bp.blogspot.com/-87sBpx97gR0/U9y_Y3H3YVI/AAAAAAAAjb4/M072PcK65nc/s220/flower_seichou7.png"
+            src="/storage/design/profile/flower_seichou7.png"
             class="float-right ml-3"
           />
           なにぶん初めてのサイト開発で、いろいろ至らないところがあるかもしれません。今後も、当サイトを盛り上げていくので、よろしくお願いします。
