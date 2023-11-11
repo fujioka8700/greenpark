@@ -21,27 +21,31 @@
           </template>
         </v-list-item>
         <!-- メインコンテンツ、終わり -->
-
-        <!-- 補足情報、始まり -->
-        <v-list-item
-          variant="tonal"
-          v-for="(link, index) in links"
-          :key="index"
-          @click.stop="movePage(link.dest)"
-          link
-        >
-          <template v-slot:prepend>
-            <v-icon :icon="link.icon"></v-icon>
-          </template>
-          <v-list-item-title v-text="link.title"></v-list-item-title>
-        </v-list-item>
-        <!-- 補足情報、終わり -->
       </v-list>
 
-      <!-- Copyright -->
-      <p class="text-caption drawer_menu_copyright">
-        &copy; {{ new Date().getFullYear() }} GreenPark
-      </p>
+      <div class="drawer-menu__bottom">
+        <v-list>
+          <!-- 補足情報、始まり -->
+          <v-list-item
+            variant="tonal"
+            v-for="(link, index) in links"
+            :key="index"
+            @click.stop="movePage(link.dest)"
+            link
+          >
+            <template v-slot:prepend>
+              <v-icon :icon="link.icon"></v-icon>
+            </template>
+            <v-list-item-title v-text="link.title"></v-list-item-title>
+          </v-list-item>
+          <!-- 補足情報、終わり -->
+        </v-list>
+
+        <!-- Copyright -->
+        <p class="text-caption text-center drawer_menu_copyright">
+          &copy; {{ new Date().getFullYear() }} GreenPark
+        </p>
+      </div>
     </v-navigation-drawer>
   </div>
 </template>
@@ -134,10 +138,8 @@ defineExpose({
 </script>
 
 <style lang="scss" scoped>
-.drawer_menu_copyright {
-  width: 100%;
+.drawer-menu__bottom {
   position: absolute;
   bottom: 0;
-  text-align: center;
 }
 </style>
