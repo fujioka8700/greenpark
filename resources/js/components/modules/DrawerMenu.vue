@@ -1,6 +1,11 @@
 <template>
   <div>
-    <v-navigation-drawer v-model="drawer" location="right" temporary>
+    <v-navigation-drawer
+      v-model="drawer"
+      location="right"
+      temporary
+      style="position: fixed"
+    >
       <v-list>
         <!-- メインコンテンツ、始まり -->
         <v-list-item
