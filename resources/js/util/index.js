@@ -80,5 +80,6 @@ export const links = [
     dest: "privacy",
     icon: "mdi-menu-right",
   },
+  { title: "運営者について", dest: "profile", icon: "mdi-menu-right" },
   { title: "お問い合わせ", dest: "contact", icon: "mdi-menu-right" },
 ];

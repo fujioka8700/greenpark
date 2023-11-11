@@ -115,6 +115,9 @@ const movePage = (dest) => {
     case "privacy":
       router.push({ name: "Privacy" });
       break;
+    case "profile":
+      router.push({ name: "Profile" });
+      break;
     case "contact":
       router.push({ name: "Contact" });
       break;
